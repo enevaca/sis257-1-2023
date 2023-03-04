@@ -1,0 +1,15 @@
+echo "# sis257-1-2023" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/enevaca/sis257-1-2023.git
+git push -u origin main
+
+Estudiantes
+git clone https://github.com/enevaca/sis257-1-2023.git
+cd sis257-1-2023
+ls -la
+cat README.md 
+git pull
+cat README.md 
