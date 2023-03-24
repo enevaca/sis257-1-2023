@@ -4,6 +4,8 @@
   en varias líneas
  */
 // Tipos de Datos
+Object.defineProperty(exports, "__esModule", { value: true });
+const poo_1 = require("./poo");
 // Boolean
 let esActivo = true; // El ámbito es sólo en la función o bloque
 var esActivo2 = false; // El ámbito es global en todo el archivo
@@ -77,3 +79,8 @@ function saludar(nombre) {
 }
 console.log(juan);
 saludar('Juan');
+// POO
+let persona = new poo_1.Persona('123456', 'Juan', 'Pérez', 'López', new Date('1998-11-03'), 76862782);
+persona.saludar();
+let estudiante = new poo_1.Estudiante('123456', 'Juan', 'Pérez', 'López', new Date('1998-11-03'), 76862782, '35-645');
+estudiante.saludar();

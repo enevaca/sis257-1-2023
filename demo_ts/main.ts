@@ -3,6 +3,9 @@
   en varias líneas
  */
 // Tipos de Datos
+
+import { Estudiante, Persona } from "./poo";
+
 // Boolean
 let esActivo: boolean = true; // El ámbito es sólo en la función o bloque
 var esActivo2: boolean = false; // El ámbito es global en todo el archivo
@@ -73,3 +76,12 @@ function saludar(nombre: string): void {
 
 console.log(juan);
 saludar('Juan');
+
+// POO
+let persona = new Persona('123456', 'Juan', 'Pérez', 'López', 
+  new Date('1998-11-03'), 76862782);
+persona.saludar();
+
+let estudiante = new Estudiante('123456', 'Juan', 'Pérez', 'López', 
+new Date('1998-11-03'), 76862782, '35-645');
+estudiante.saludar();
