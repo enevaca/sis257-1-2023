@@ -8,7 +8,7 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
+import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { CreateInterpreteDto } from './dto/create-interprete.dto';
 import { UpdateInterpreteDto } from './dto/update-interprete.dto';
 import { InterpreteService } from './interprete.service';
@@ -26,16 +26,19 @@ export class InterpreteController {
   }
 
   @Get()
+  @ApiOkResponse({ type: InterpreteEntity, isArray: true })
   findAll() {
     return this.interpreteService.findAll();
   }
 
   @Get(':id')
+  @ApiOkResponse({ type: InterpreteEntity })
   findOne(@Param('id', ParseIntPipe) id: number) {
     return this.interpreteService.findOne(id);
   }
 
   @Patch(':id')
+  @ApiOkResponse({ type: InterpreteEntity })
   update(
     @Param('id', ParseIntPipe) id: number,
     @Body() updateInterpreteDto: UpdateInterpreteDto,
@@ -44,6 +47,7 @@ export class InterpreteController {
   }
 
   @Delete(':id')
+  @ApiOkResponse()
   remove(@Param('id', ParseIntPipe) id: number) {
     return this.interpreteService.remove(id);
   }

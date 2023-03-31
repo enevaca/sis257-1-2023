@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { InterpreteModule } from './interprete/interprete.module';
+import { GeneroModule } from './genero/genero.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { InterpreteModule } from './interprete/interprete.module';
       autoLoadEntities: true
     }),
     InterpreteModule,
+    GeneroModule,
   ],
   controllers: [AppController],
   providers: [AppService],
