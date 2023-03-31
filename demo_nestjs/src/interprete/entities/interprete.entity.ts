@@ -1,4 +1,12 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { AlbumEntity } from 'src/album/entities/album.entity';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity('interpretes')
 export class InterpreteEntity {
@@ -16,4 +24,7 @@ export class InterpreteEntity {
 
   @UpdateDateColumn({ name: 'fecha_modificacion' })
   fechaModificacion: Date;
+
+  @OneToMany(() => AlbumEntity, album => album.interprete)
+  albumes: AlbumEntity[];
 }
