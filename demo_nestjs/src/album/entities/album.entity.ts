@@ -1,5 +1,6 @@
+import { CancionEntity } from "src/cancion/entities/cancion.entity";
 import { InterpreteEntity } from "src/interprete/entities/interprete.entity";
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity('albumes')
 export class AlbumEntity {
@@ -23,5 +24,8 @@ export class AlbumEntity {
 
   @ManyToOne(() => InterpreteEntity, (interprete) => interprete.albumes)
   @JoinColumn({ name: 'id_interprete', referencedColumnName: 'id' })
-  interprete: InterpreteEntity;  
+  interprete: InterpreteEntity;
+
+  @OneToMany(() => CancionEntity, (cancion) => cancion.album)
+  canciones: CancionEntity[];
 }

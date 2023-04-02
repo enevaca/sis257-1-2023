@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { CancionEntity } from "src/cancion/entities/cancion.entity";
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity('generos')
 export class GeneroEntity {
@@ -13,4 +14,7 @@ export class GeneroEntity {
 
   @UpdateDateColumn({ name: 'fecha_modificacion' })
   fechaModificacion: Date;
+
+  @OneToMany(() => CancionEntity, (cancion) => cancion.genero)
+  canciones: CancionEntity[];
 }

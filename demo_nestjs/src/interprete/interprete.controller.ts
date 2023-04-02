@@ -8,7 +8,7 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiCreatedResponse, ApiOkResponse, ApiOperation, ApiProperty, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CreateInterpreteDto } from './dto/create-interprete.dto';
 import { UpdateInterpreteDto } from './dto/update-interprete.dto';
 import { InterpreteService } from './interprete.service';
@@ -21,24 +21,28 @@ export class InterpreteController {
 
   @Post()
   @ApiCreatedResponse({ type: InterpreteEntity })
+  @ApiOperation({ summary: 'Crea un nuevo intérprete'})
   create(@Body() createInterpreteDto: CreateInterpreteDto) {
     return this.interpreteService.create(createInterpreteDto);
   }
 
   @Get()
   @ApiOkResponse({ type: InterpreteEntity, isArray: true })
+  @ApiOperation({ summary: 'Obtiene la lista de intérpretes'})
   findAll() {
     return this.interpreteService.findAll();
   }
 
   @Get(':id')
   @ApiOkResponse({ type: InterpreteEntity })
+  @ApiOperation({ summary: 'Obtiene un intérprete con base al identificador'})
   findOne(@Param('id', ParseIntPipe) id: number) {
     return this.interpreteService.findOne(id);
   }
 
   @Patch(':id')
   @ApiOkResponse({ type: InterpreteEntity })
+  @ApiOperation({ summary: 'Actualiza los datos de un intérprete con base al identificador'})
   update(
     @Param('id', ParseIntPipe) id: number,
     @Body() updateInterpreteDto: UpdateInterpreteDto,
@@ -48,6 +52,7 @@ export class InterpreteController {
 
   @Delete(':id')
   @ApiOkResponse()
+  @ApiOperation({ summary: 'Elimina un intérprete con base al identificador'})
   remove(@Param('id', ParseIntPipe) id: number) {
     return this.interpreteService.remove(id);
   }
