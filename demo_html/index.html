@@ -7,18 +7,22 @@
   <title>SIS257</title>
   <link rel="stylesheet" href="./css/style.css">
   <style>
-    #h1Titulo { color: red; background-color: tomato; }
+    #h1Titulo { 
+      color: red; 
+      background-color: tomato; 
+    }
+    h2 { background-color: aquamarine; }
   </style>
 </head>
-<body style="background-color: powderblue;">
+<body>
   <h1 id="h1Titulo">Hola Mundo!!!</h1>
-  <h2 style="font-family: Verdana; text-align: right;">Este es el título 2</h2>
+  <h2>Este es el título 2</h2>
   <h3 style="border: 3px dashed violet;">Este es el título 3</h3>
   <h4>Este es el título 4</h4>
-  <h5>Este es el título 5</h5>
+  <h5 class="error">Este es el título 5</h5>
   <h6><del>Este es el título 6</del></h6>
   <p style="font-size: medium;">Este es un párrafo <q>Cita corta</q></p>
-  <a href="https://usfx.bo" target="_blank">Enlace a la USFX</a>
+  <a id="usfx" href="https://usfx.bo" target="_blank">Enlace a la USFX</a>
   <img src="./images/linux.png" alt="Logo Linux" width="80px">
   <br><button>Clic Aquí</button>
   <ol>
@@ -26,15 +30,44 @@
     <li><i>Fundamentos de la Programación <sub>SIS457</sub></i></li>
     <li>Redes de Datos I <sup>INFO221</sup></li>
   </ol>
-  <p><blockquote cite="https://usfx.bo">
+  <p><blockquote id="cita" cite="https://usfx.bo">
     Coadyuvar en la formación de profesionales expertos en el uso de técnicas y herramientas de control y auditoría en entidades gubernamentales, desarrollando habilidades para la aplicación 
   </blockquote></p>
   <p>La <abbr title="Universidad de San Francisco Xavier">USFX</abbr>
     fue fundada en 1624.
   </p> <!-- Otro Comentario -->
-  <address>Autor: Juan Pérez</address>
+  <address class="error">Autor: Juan Pérez</address>
   <p><cite>HTML 5</cite> por Jhon Due. Sucre 2023.</p>
   <bdo dir="rtl">Texto escrito de derecha a izquierda</bdo>
   <!-- Esto es un comentario -->
+  <br>
+  <input type="text" class="input">
+  <span class="error">Este campo es obligatorio</span>
+  <script>
+    const PI = 3.1416;
+    let saludo = "Hola Mundo";
+    saludo = 5.69;
+    if(saludo % 2 !== 0) {
+      var numero = 10;
+      console.log(numero);
+    }
+
+    var miAuto = new Object();
+    miAuto.marca = "Ford";
+    miAuto.color = "Rojo";
+
+    console.log(miAuto);
+
+    document.getElementById("h1Titulo").innerHTML = "Hola JavaScript";
+    document.getElementById("h1Titulo").style.fontSize = "60px";
+    document.getElementById("h1Titulo").style.fontFamily = "Arial";
+    document.getElementById("usfx").href = "https://usfx.bo/inicio/institucional";
+
+    var error = document.getElementsByClassName("error");
+    for(let i = 0; i < error.length; i++) {
+      //error[i].style.display = "none";
+      error[i].style.backgroundColor = "yellow";
+    }
+  </script>
 </body>
 </html>
