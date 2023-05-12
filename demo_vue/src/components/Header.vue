@@ -20,9 +20,7 @@ const location = useRoute();
 
   <nav
     class="navbar navbar-expand-lg"
-    :style="
-      'background-color: ' + (location.path == '/' ? 'transparent' : 'black !important')
-    "
+    :style="location.path != '/' ? 'background-color: black !important' : ''"
   >
     <div class="container">
       <RouterLink to="/" class="navbar-brand"> Music SIS257 </RouterLink>
