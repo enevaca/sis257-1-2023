@@ -20,9 +20,9 @@ import { AuthModule } from './auth/auth.module';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: ['**/*.entity.ts'],
+      entities: [__dirname + '**/*.entity.{ts,js}'],
       synchronize: true,
-      autoLoadEntities: true
+      autoLoadEntities: true,
     }),
     InterpreteModule,
     GeneroModule,
