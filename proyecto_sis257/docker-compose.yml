@@ -1,0 +1,63 @@
+version: "3.6"
+
+networks:
+  net-sis257:
+    name: net-sis257
+    driver: bridge
+
+services:
+  db-sis257:
+    image: mysql
+    container_name: db-sis257
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    expose:
+      - "3307"
+    ports:
+      - "3307:3306"
+    networks:
+      - net-sis257
+    environment:
+      MYSQL_DATABASE: db_sis257
+      MYSQL_ALLOW_EMPTY_PASSWORD: ok
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: usrsis257
+      MYSQL_PASSWORD: 123456
+      MYSQL_ROOT_HOST: '%'
+
+  backend-sis257:
+    depends_on:
+      - db-sis257
+    image: bk-sis257
+    container_name: api-sis257
+    restart: unless-stopped
+    build:
+      context: ./backend_sis257
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    networks:
+      - net-sis257
+    environment:
+      DB_HOST: db-sis257
+    volumes:
+      - ./backend_sis257:/usr/src/app
+      - /usr/src/app/node_modules/
+
+  frontend-sis257:
+    depends_on:
+        - backend-sis257
+    image: fn-sis257
+    container_name: app-sis257
+    restart: unless-stopped
+    build:
+      context: ./frontend_sis257
+      dockerfile: Dockerfile
+    ports:
+      - 85:85
+    networks:
+      - net-sis257
+    environment:
+      VITE_BASE_URL_ENDPOINT: backend-sis257
+    volumes:
+      - /usr/src/app/node_modules/
